@@ -36,6 +36,7 @@ the quadratic assignment problem **(QAP)** :
 <p align="center">
     <img src="https://latex.codecogs.com/svg.image?\large&space;p^*_{\text{QAP}}:=\min_{X&space;\in&space;\Pi}&space;&space;\text{trace}(AXBX^T),">
 </p>
+
 where A is the flow matrix, B is the distance matrix, and &Pi; denotes the set of n &times; n permutation matrices, i.e.,  
 
 <p align="center">
