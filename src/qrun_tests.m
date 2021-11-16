@@ -268,7 +268,7 @@ for i = probnumbers
     timessec(rownumb) = Out11.toc + time_Vhat;
     
     
-    save(['results\', filename,'.mat'])    % save results
+    save(['..\results\', filename,'.mat'])    % save results
     if i < 100 && loadfile ~= name_all(i)  % i == 100 for special cases
         fprintf('ERROR: loadfile name and optfile name contradiction\n')
         keyboard

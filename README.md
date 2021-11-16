@@ -1,104 +1,101 @@
 [![INFORMS Journal on Computing Logo](https://INFORMSJoC.github.io/logos/INFORMS_Journal_on_Computing_Header.jpg)](https://pubsonline.informs.org/journal/ijoc)
 
-# CacheTest
+# A Restricted Dual Peaceman-Rachford Splitting Method for a Strengthened DNN Relaxation for QAP 
 
-This archive is distributed in association with the [INFORMS Journal on
-Computing](https://pubsonline.informs.org/journal/ijoc) under the [MIT License](LICENSE).
+This archive is distributed in association with the [INFORMS Journal on Computing](https://pubsonline.informs.org/journal/ijoc) under the [MIT License](LICENSE).
 
-The software and data in this repository are a snapshot of the software and data
-that were used in the research reported on in the paper 
-[This is a Template](https://doi.org/10.1287/ijoc.2019.0934) by T. Ralphs. 
-The snapshot is based on 
-[this SHA](https://github.com/tkralphs/JoCTemplate/commit/f7f30c63adbcb0811e5a133e1def696b74f3ba15) 
-in the development repository. 
+The software and data in this repository are a snapshot of the software and data that were used in the research reported on in the paper [A Restricted Dual Peaceman-Rachford Splitting Method for a Strengthened DNN Relaxation for QAP](https://doi.org/10.1287/ijoc.2020.0336) by Naomi Graham, Hao Hu, Jiyoung Im, Xinxin Li and Henry Wolkowicz. The snapshot is based on [this SHA](https://github.com/tkralphs/JoCTemplate/commit/f7f30c63adbcb0811e5a133e1def696b74f3ba15) in the development repository. 
 
-**Important: This code is being developed on an on-going basis at 
-https://github.com/tkralphs/JoCTemplate. Please go there if you would like to
-get a more recent version or would like support**
+**Important: This code is being developed on an on-going basis at https://github.com/Xinxin-opt/2020.0336. Please use the link if you would like to get the most up-to-date version.**
+
 
 ## Cite
 
-To cite this software, please cite the [paper](https://doi.org/10.1287/ijoc.2019.0934) using its DOI and the software itself, using the following DOI.
+To cite this software, please cite the [paper](https://doi.org/10.1287/ijoc.2020.0336) using its DOI and the software itself, using the following DOI.
 
 [![DOI](https://zenodo.org/badge/285853815.svg)](https://zenodo.org/badge/latestdoi/285853815)
 
 Below is the BibTex for citing this version of the code.
 
 ```
-@article{CacheTest,
-  author =        {T. Ralphs},
+@article{QAP2021PRSM,
+  author =        {N. Graham, H. Hu, J. Im, X. Li and H. Wolkowicz},
   publisher =     {INFORMS Journal on Computing},
-  title =         {{CacheTest} Version v1.0},
-  year =          {2020},
+  title =         {rPRSM Version v1.0},
+  year =          {2021},
   doi =           {10.5281/zenodo.3977566},
-  url =           {https://github.com/INFORMSJoC/JoCTemplate},
+  url =           {https://github.com/INFORMSJoC/2020.0336},
 }  
 ```
 
 ## Description
 
-The goal of this software is to demonstrate the effect of cache optimization.
+The goal of this software is to solve a doubly nonnegative **(DNN)** relaxation for 
+the quadratic assignment problem **(QAP)** :  
+$$
+p^*_{\text{QAP}}:=\min_{X \in \Pi}  \text{trace}(AXBX^T),
+$$
+where A is the flow matrix, B is the distance matrix, and $\Pi$ denotes the set of $n\times n$ permutation matrices, i.e.,
+$$
+\Pi = \left\{X\in\mathbb{R}^{n\times n}: Xe=e, X^Te = e,X_{ij}\in \{0,1\} \right\}.
+$$
+Users can provide problem instances in three ways to our software:
+1. Users can provide their own instance;
+2. Users can generate random instances; 
+3. Users can directly use the instance from [QAPLIB](http://www.mgi.polymtl.ca/anjos/qaplib/inst.html).
 
-## Building
+Users can use the script file *main.m* to run tests using our software. To run tests, place the data file (if there are any) in the script folder. Before running the *main.m* file in Matlab, modify *main.m* properly to navigate your data and choose the right datetype. This file calls *qrun_tests.m* in src folder. Results can be found in results folder.
 
-In Linux, to build the version that multiplies all elements of a vector by a
-constant (used to obtain the results in [Figure 1](results/mult-test.png) in the
-paper), stepping K elements at a time, execute the following commands.
+**Important: A user provided data must meet the following requirements: the data matrices A,B are nonnegative, INTEGER valued and n-by-n symmetric matrices**
 
-```
-make mult
-```
 
-Alternatively, to build the version that sums the elements of a vector (used
-to obtain the results [Figure 2](results/sum-test.png) in the paper), stepping K
-elements at a time, do the following.
 
-```
-make clean
-make sum
-```
+## Contents
 
-Be sure to make clean before building a different version of the code.
+script folder    |   &#160; 
+---------------|-------------------
+main.m    | calls all relavant routines for testing
+
+src folder       |  &#160; 
+------------- |-------------------
+qrun_tests.m     |     sets up options, calls the solver PRSM or ADMM, and outputs relevant information. 
+ADMM_QAP.m       |    solves the **DNN** relaxation using ADMM
+PRSM_QAP.m       |    solves the **DNN** relaxation using PRSM
+simplex_proj.m   |  projects a vector onto the simplex
+sec2hms.m        |  converts seconds into hours-minutes-seconds
+proj_dstochastic.m|  projects a vector onto the set of doubly stochastic matrices
+
+data folder   |   &#160; 
+---------- |------------
+large_instances | contains large size instances from QAPLIP
+medium_instances| contains medium size instances from QAPLIP
+small_instances |  contains small size instances from QAPLIP
+Optimal_values.m|  contains optimal/best konwn bounds for each dataset
+
+results folder    |   &#160; 
+-------------- |-------------------
+results.mat | a struct Out. contains various information and a variable Y from the solver
 
 ## Results
 
-Figure 1 in the paper shows the results of the multiplication test with different
-values of K using `gcc` 7.5 on an Ubuntu Linux box.
+Outputs in .mat |   &#160; 
+--------------|-------------------
+Y             | optimal solution of **DNN** relaxation to **QAP**
+   Out.obj    |  history of trace(L*Y) 
+   Out.iter   | total number iterations
+   Out.feas   | history of residual norm(Y-VRV, 'fro')/norm(Y, 'fro') 
+   Out.pR     | history of primal residual, norm(Y-VRV, 'fro')
+   Out.dR     | history of dual residual, norm(Y-Y0, 'fro')
+   Out.Z      | final dual variable Z
+   Out.R   | final primal variable R 
+   Out.Vhat      | Vhat
+   Out.bestiter  | last iteration that yields best bound
+   Out.ubest     | best upper bound
+   Out.lbest     | best lower bound
+   Out.L         | modified objective function data L, trace(L*Y), after scaling and shifting
+   Out.Lorig     | original objective function data L, trace(Lorig*Y)
+   Out.scale     | scaling factor of the objective
+   Out.shift     | shifting parameter of the objective
+   Out.ubdtime   | time spent on computing upper bounds
+   Out.lbdstoptime  | first time when the solver lower bound met the user provided lower bound (=opts.lbdstop). If it is never met, outputs -100.
 
-![Figure 1](results/mult-test.png)
-
-Figure 2 in the paper shows the results of the sum test with different
-values of K using `gcc` 7.5 on an Ubuntu Linux box.
-
-![Figure 1](results/sum-test.png)
-
-## Replicating
-
-To replicate the results in [Figure 1](results/mult-test), do either
-
-```
-make mult-test
-```
-or
-```
-python test.py mult
-```
-To replicate the results in [Figure 2](results/sum-test), do either
-
-```
-make sum-test
-```
-or
-```
-python test.py sum
-```
-
-## Ongoing Development
-
-This code is being developed on an on-going basis at the author's
-[Github site](https://github.com/tkralphs/JoCTemplate).
-
-## Support
-
-For support in using this software, submit an
-[issue](https://github.com/tkralphs/JoCTemplate/issues/new).
