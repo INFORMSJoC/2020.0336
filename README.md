@@ -32,13 +32,13 @@ Below is the BibTex for citing this version of the code.
 
 The goal of this software is to solve a doubly nonnegative **(DNN)** relaxation for 
 the quadratic assignment problem **(QAP)** :  
-$$
-p^*_{\text{QAP}}:=\min_{X \in \Pi}  \text{trace}(AXBX^T),
-$$
-where A is the flow matrix, B is the distance matrix, and $\Pi$ denotes the set of $n\times n$ permutation matrices, i.e.,
-$$
-\Pi = \left\{X\in\mathbb{R}^{n\times n}: Xe=e, X^Te = e,X_{ij}\in \{0,1\} \right\}.
-$$
+<p align="center">
+    <img src="https://latex.codecogs.com/svg.image?\large&space;p^*_{\text{QAP}}:=\min_{X&space;\in&space;\Pi}&space;&space;\text{trace}(AXBX^T),">
+</p>
+where A is the flow matrix, B is the distance matrix, and &Pi; denotes the set of n &times; n permutation matrices, i.e.,
+<p align="center">
+    <img src="https://latex.codecogs.com/svg.image?\large&space;\Pi&space;=&space;\{X\in\mathbb{R}^{n\times&space;n}:&space;Xe=e,&space;X^Te&space;=&space;e,X_{ij}\in&space;\{0,1\}&space;\}.">
+</p>
 Users can provide problem instances in three ways to our software:
 1. Users can provide their own instance;
 2. Users can generate random instances; 
