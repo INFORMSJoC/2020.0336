@@ -4,7 +4,7 @@
 
 This archive is distributed in association with the [INFORMS Journal on Computing](https://pubsonline.informs.org/journal/ijoc) under the [MIT License](LICENSE).
 
-The software and data in this repository are a snapshot of the software and data that were used in the research reported on in the paper [A Restricted Dual Peaceman-Rachford Splitting Method for a Strengthened DNN Relaxation for QAP](https://doi.org/10.1287/ijoc.2020.0336) by Naomi Graham, Hao Hu, Jiyoung Im, Xinxin Li and Henry Wolkowicz. The snapshot is based on [this SHA](https://github.com/tkralphs/JoCTemplate/commit/f7f30c63adbcb0811e5a133e1def696b74f3ba15) in the development repository. 
+The software and data in this repository are a snapshot of the software and data that were used in the research reported on in the paper [A Restricted Dual Peaceman-Rachford Splitting Method for a Strengthened DNN Relaxation for QAP](https://doi.org/10.1287/ijoc.2020.0336) by Naomi Graham, Hao Hu, Jiyoung Im, Xinxin Li and Henry Wolkowicz. The snapshot is based on [this SHA](https://github.com/Xinxin-opt/2020.0336/commit/master) in the development repository. 
 
 **Important: This code is being developed on an on-going basis at https://github.com/Xinxin-opt/2020.0336. Please use the link if you would like to get the most up-to-date version.**
 
@@ -32,13 +32,17 @@ Below is the BibTex for citing this version of the code.
 
 The goal of this software is to solve a doubly nonnegative **(DNN)** relaxation for 
 the quadratic assignment problem **(QAP)** :  
-$$
-p^*_{\text{QAP}}:=\min_{X \in \Pi}  \text{trace}(AXBX^T),
-$$
-where A is the flow matrix, B is the distance matrix, and $\Pi$ denotes the set of $n\times n$ permutation matrices, i.e.,
-$$
-\Pi = \left\{X\in\mathbb{R}^{n\times n}: Xe=e, X^Te = e,X_{ij}\in \{0,1\} \right\}.
-$$
+
+<p align="center">
+    <img src="https://latex.codecogs.com/svg.image?\large&space;p^*_{\text{QAP}}:=\min_{X&space;\in&space;\Pi}&space;&space;\text{trace}(AXBX^T),">
+</p>
+
+where A is the flow matrix, B is the distance matrix, and &Pi; denotes the set of n &times; n permutation matrices, i.e.,  
+
+<p align="center">
+    <img src="https://latex.codecogs.com/svg.image?\large&space;\Pi&space;=&space;\{X\in\mathbb{R}^{n\times&space;n}:&space;Xe=e,&space;X^Te&space;=&space;e,X_{ij}\in&space;\{0,1\}&space;\}.">
+</p>
+
 Users can provide problem instances in three ways to our software:
 1. Users can provide their own instance;
 2. Users can generate random instances; 
