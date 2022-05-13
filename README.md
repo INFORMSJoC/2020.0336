@@ -4,7 +4,7 @@
 
 This archive is distributed in association with the [INFORMS Journal on Computing](https://pubsonline.informs.org/journal/ijoc) under the [MIT License](LICENSE).
 
-The software and data in this repository are a snapshot of the software and data that were used in the research reported on in the paper "A Restricted Dual Peaceman-Rachford Splitting Method for a Strengthened DNN Relaxation for QAP" by Naomi Graham, Hao Hu, Jiyoung Im, Xinxin Li and Henry Wolkowicz. The snapshot is based on [this SHA](https://github.com/Xinxin-opt/2020.0336/commit/master) in the development repository. 
+The software and data in this repository are a snapshot of the software and data that were used in the research reported on in the paper ["A Restricted Dual Peaceman-Rachford Splitting Method for a Strengthened DNN Relaxation for QAP"](https://doi.org/10.1287/ijoc.2022.1161) by Naomi Graham, Hao Hu, Jiyoung Im, Xinxin Li and Henry Wolkowicz. The snapshot is based on [this SHA](https://github.com/Xinxin-opt/2020.0336/commit/master) in the development repository. 
 
 **Important: This code is being developed on an on-going basis at https://github.com/Xinxin-opt/2020.0336. Please use the link if you would like to get the most up-to-date version.**
 
